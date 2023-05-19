@@ -1,0 +1,21 @@
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearCart } from '../feature/cart/CartSlice'
+import { closeModal } from '../feature/modal/ModalSlice'
+
+export const Modal = () => {
+  const dispatch = useDispatch()
+  return (
+    <aside className='modal-container'>
+        <div className='modal'>
+            <h4>買い物かごを全て空にしますか？</h4>
+            <div className='btn-container'>
+                <button className='btn confirm-btn' onClick={()=> {
+                  dispatch(clearCart())
+                  dispatch(closeModal())}}>OK</button>
+                <button className='btn clear-btn' onClick={()=> dispatch(closeModal())}>やめとく</button>
+            </div>
+        </div>
+    </aside>
+  )
+}
